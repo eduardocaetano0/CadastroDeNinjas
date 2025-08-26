@@ -20,6 +20,7 @@ public class NinjaModel {
     private Long id;
     private String nome;
     private int idade;
+    @Column(unique = true)// faz itens unicos na tabela
     private String email;
 
     //@ManyToOne --> Um ninja tem uma única missão.
