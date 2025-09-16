@@ -29,16 +29,19 @@ public class NinjaController {
     public List<NinjaModel> listarTodos(){
         return ninjaService.listarNinja();
     }
+
     //mostrar ninja por id(READ)
     @GetMapping("/listar/{id}")
     public NinjaModel listarTodosID(@PathVariable Long id){
         return ninjaService.alistarNinjaPorId(id);
     }
+
     //alterar dados ninja(UPDATE)
     @PutMapping("/alterarID")
     public String alterarNinjaPorId(){
         return "Alternar ninja por ID";
     }
+
     //deletar ninja(DELETE)
     @DeleteMapping("/deletarID")
     public String deletarNinjaPorId(){
