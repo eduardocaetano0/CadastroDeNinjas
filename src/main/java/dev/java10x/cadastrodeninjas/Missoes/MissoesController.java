@@ -2,17 +2,24 @@ package dev.java10x.cadastrodeninjas.Missoes;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("missoes")
 public class MissoesController {
+    private MissoesService missoesService;
+
+    public MissoesController(MissoesService missoesService) {
+        this.missoesService = missoesService;
+    }
 
     @GetMapping("/listar") //----------> Mandar uma requisição para mostras as missões
-    public String listarMissoes(){
-        return "Missões listadas com sucesso";
+    public List<MissoesModel> listarMissoes(){
+        return missoesService.listarMissoes();
     }
     @PostMapping("/criar")//----------> Mandar uma requisição para criar as missões
-    public String criarMissao(){
-        return "Missão criada com sucesso";
+    public MissoesModel criarMissao(@RequestBody MissoesModel missoes){
+        return missoesService.criarMissoes(missoes);
     }
     @PutMapping("/alterar")//---------->Mandar uma requisição para alterar as missões
     public String alterarMissao(){
