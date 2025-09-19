@@ -28,4 +28,19 @@ public class NinjaService {
     public NinjaModel criarNinja(NinjaModel ninja){
         return ninjaRepository.save(ninja);
     }
+
+    // deletar ninja - tem que ser void
+    public void deletarNinjaPorId(Long id){
+        ninjaRepository.deleteById(id);
+    }
+
+    //alterar ninja
+    public NinjaModel atualizarNinja(Long id, NinjaModel ninjaAtt){
+        Optional<NinjaModel>atualizarPorId = ninjaRepository.findById(id);
+        if(ninjaRepository.existsById(id)){
+            ninjaAtt.setId(id);
+            return ninjaRepository.save(ninjaAtt);
+        }
+        return null;
+    }
 }
