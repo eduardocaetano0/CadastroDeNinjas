@@ -9,8 +9,11 @@ import java.util.Optional;
 public class NinjaService {
 
     private NinjaRepository ninjaRepository;
-    public NinjaService(NinjaRepository ninjaRepository) {
+    private NinjaMapper ninjaMapper;
+
+    public NinjaService(NinjaRepository ninjaRepository, NinjaMapper ninjaMapper) {
         this.ninjaRepository = ninjaRepository;
+        this.ninjaMapper = ninjaMapper;
     }
 
     //Listar todos os ninjas
