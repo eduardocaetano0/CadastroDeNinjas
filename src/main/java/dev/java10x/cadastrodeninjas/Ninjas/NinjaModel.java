@@ -15,6 +15,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class NinjaModel {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
