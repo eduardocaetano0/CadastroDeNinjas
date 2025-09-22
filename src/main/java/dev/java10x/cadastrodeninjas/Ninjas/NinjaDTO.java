@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class NinjaDTO {
-
+//DTO  sever para tirar a responsabilidade do model e pasasr como resposta da minh api só oq eu quero sem expor o model
         private Long id;
         private String nome;
         private int idade;
