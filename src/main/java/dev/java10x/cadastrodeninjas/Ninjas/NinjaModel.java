@@ -15,6 +15,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class NinjaModel {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -31,6 +32,9 @@ public class NinjaModel {
 
     @Column(name = "img_url")
     private String imgUrl;
+
+    @Column(name = "rank")
+    private String rank;
 
     //@ManyToOne --> Um ninja tem uma única missão.
     @ManyToOne
