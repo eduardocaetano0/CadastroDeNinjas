@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("missoes")
+@RequestMapping("/missoes")
 public class MissoesController {
     private MissoesService missoesService;
 
@@ -14,20 +14,27 @@ public class MissoesController {
     }
 
     @GetMapping("/listar") //----------> Mandar uma requisição para mostras as missões
-    public List<MissoesModel> listarMissoes(){
+    public List<MissoesDTO> listarMissoes(){
         return missoesService.listarMissoes();
     }
+
+    @GetMapping("/listar/{id}")
+    public MissoesDTO listarMissoesPorId(@PathVariable Long id){
+        return missoesService.listarMissoesPorId(id);
+    }
+
     @PostMapping("/criar")//----------> Mandar uma requisição para criar as missões
-    public MissoesModel criarMissao(@RequestBody MissoesModel missoes){
+    public MissoesDTO criarMissao(@RequestBody MissoesDTO missoes){
         return missoesService.criarMissoes(missoes);
     }
+
     @PutMapping("/alterar/{id}")//---------->Mandar uma requisição para alterar as missões
     public MissoesDTO alterarMissaoPorId(@PathVariable Long id, @RequestBody MissoesDTO missoes){
         return missoesService.alterarMissoesPorId(id, missoes);
     }
+
     @DeleteMapping("/deletar")//---------->Mandar uma requisição para deletar as missões
     public String deletarMissao(){
         return "Missão deletada com sucesso";
     }
-
 }
