@@ -21,9 +21,9 @@ public class MissoesController {
     public MissoesModel criarMissao(@RequestBody MissoesModel missoes){
         return missoesService.criarMissoes(missoes);
     }
-    @PutMapping("/alterar")//---------->Mandar uma requisição para alterar as missões
-    public String alterarMissao(){
-        return "Missão alterada com sucesso";
+    @PutMapping("/alterar/{id}")//---------->Mandar uma requisição para alterar as missões
+    public MissoesDTO alterarMissaoPorId(@PathVariable Long id, @RequestBody MissoesDTO missoes){
+        return missoesService.alterarMissoesPorId(id, missoes);
     }
     @DeleteMapping("/deletar")//---------->Mandar uma requisição para deletar as missões
     public String deletarMissao(){
