@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Missões</title>
+</head>
+<body>
+
+<h1>Lista de Missões</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Dificuldade</th>
+        <th>Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="missao : ${missoes}">
+        <td th:text="${missao.id}">1</td>
+        <td th:text="${missao.nome}">Nome da Missão</td>
+        <td th:text="${missao.dificuldade}">Dificuldade</td>
+        <td>
+            <a>Detalhes</a>
+            <a>Alterar</a>
+            <a th:href="@{/missoes/ui/deletar/{id}id=${missoes.id}}">Deletar>
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

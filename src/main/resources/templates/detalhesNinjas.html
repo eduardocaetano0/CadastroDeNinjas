@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="'Detalhes de ' + ${ninjas.nome}"></title>
+    <style>
+        /* Estilo geral da página com TEMA ESCURO */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* Mesmo fundo em gradiente escuro da página de lista */
+            background: linear-gradient(135deg, #23272b 10%, #2c3e50 100%);
+            /* Cor do texto principal alterada para claro */
+            color: #f8f9fa;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        /* O cartão principal adaptado para o TEMA ESCURO */
+        .ninja-card {
+            /* Fundo escuro para o card, combinando com as linhas da tabela */
+            background-color: #343a40;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 480px;
+            text-align: center;
+            padding: 0 40px 40px 40px;
+            /* Borda de destaque azul (opcional, mas combina) */
+            border-top: 6px solid #007bff;
+        }
+
+        /* Avatar (imagem) do ninja */
+        .ninja-avatar {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            /* Borda branca se destaca no fundo escuro */
+            border: 8px solid #ffffff;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+            object-fit: cover;
+            margin-top: -80px;
+            margin-bottom: 15px;
+        }
+
+        /* Nome do ninja com cor clara para contraste */
+        .ninja-name {
+            font-size: 2.2em;
+            font-weight: 700;
+            margin: 0;
+            color: #ffffff; /* Cor alterada para branco */
+        }
+
+        /* Rank do ninja com cor cinza claro */
+        .ninja-rank {
+            font-size: 1.3em;
+            color: #adb5bd; /* Cor alterada para um cinza mais claro */
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        /* Lista com os detalhes */
+        .details-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: left;
+        }
+
+        .details-list li {
+            padding: 15px 5px;
+            /* Borda sutil para separar os itens */
+            border-bottom: 1px solid #495057;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.1em;
+        }
+
+        .details-list li:last-child {
+            border-bottom: none;
+        }
+
+        .details-list strong {
+            color: #ced4da; /* Labels da lista com cinza claro */
+        }
+
+        /* Botão para voltar à lista (já combina com o tema) */
+        .back-link {
+            display: inline-block;
+            margin-top: 35px;
+            padding: 12px 30px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            background-color: #0056b3;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+<div class="ninja-card">
+    <img th:src="${ninjas.imgUrl}" alt="Foto do Ninja" class="ninja-avatar">
+
+    <h1 class="ninja-name" th:text="${ninjas.nome}">Naruto Uzumaki</h1>
+    <p class="ninja-rank" th:text="${ninjas.rank}">Hokage</p>
+
+    <ul class="details-list">
+        <li><strong>ID:</strong> <span th:text="${ninjas.id}">1</span></li>
+        <li><strong>Idade:</strong> <span th:text="${ninjas.idade} + ' anos'">33 anos</span></li>
+        <li><strong>Email:</strong> <span th:text="${ninjas.email}">hokage@konoha.com</span></li>
+        <li>
+            <strong>Missão:</strong>
+            <span th:if="${ninjas.missoes}" th:text="${ninjas.missoes.nome}">Salvar o Mundo</span>
+            <span th:if="${ninjas.missoes == null}">Descansando</span>
+        </li>
+    </ul>
+
+    <a th:href="@{/ninjas/ui/listar}" class="back-link">← Voltar para Lista</a>
+</div>
+
+</body>
+</html>
