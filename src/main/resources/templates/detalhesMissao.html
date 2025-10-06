@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="'Detalhes da Missão: ' + ${missao.nome}"></title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #23272b 10%, #2c3e50 100%);
+            color: #f8f9fa;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+        .mission-card {
+            background-color: #343a40;
+            border-radius: 15px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3); /* Sombra mais forte */
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+            padding: 40px;
+            border-top: 6px solid #143357; /* Amarelo mais vibrante */
+            transition: transform 0.3s ease-in-out; /* Efeito de hover */
+        }
+        .mission-card:hover {
+            transform: translateY(-5px); /* Leve levantamento no hover */
+        }
+        .mission-name {
+            font-size: 2.5em; /* Fonte maior */
+            font-weight: 700;
+            margin: 0 0 15px 0; /* Mais espaçamento */
+            color: #ffffff;
+            letter-spacing: 1px; /* Mais espaço entre letras */
+        }
+        .difficulty-label {
+            font-size: 1.1em; /* Tamanho da fonte para "Dificuldade" */
+            color: #ced4da; /* Cor de texto mais suave */
+            margin-bottom: 5px; /* Espaço entre o label e o valor */
+            font-weight: 500;
+        }
+        .mission-difficulty {
+            font-size: 1.6em; /* Dificuldade em destaque */
+            color: #ffffff; /* Amarelo vibrante para a dificuldade */
+            margin-bottom: 30px; /* Mais espaçamento abaixo */
+            font-weight: 600; /* Um pouco mais encorpado */
+            text-transform: uppercase;
+            letter-spacing: 1.5px; /* Mais destaque */
+            background-color: rgba(53, 86, 255, 0.1); /* Fundo leve para o texto da dificuldade */
+            padding: 5px 15px;
+            border-radius: 8px;
+            display: inline-block; /* Para o padding e background funcionarem */
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 40px; /* Mais espaçamento do cartão */
+            padding: 14px 35px; /* Botão maior */
+            background-color: #495057; /* Cinza escuro */
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1em; /* Fonte maior no botão */
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra no botão */
+        }
+        .back-link:hover {
+            background-color: #6c757d; /* Cinza mais claro no hover */
+            transform: translateY(-4px) scale(1.02); /* Levanta e cresce um pouco */
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+<div class="mission-card">
+    <h1 class="mission-name" th:text="${missao.nome}">Nome da Missão</h1>
+    <p class="difficulty-label">DIFICULDADE:</p>
+    <p class="mission-difficulty" th:text="${missao.dificuldade}">FACIL</p>
+</div>
+
+<a th:href="@{/missoes/ui/listar}" class="back-link">← Voltar para a Lista de Missões</a>
+
+</body>
+</html>

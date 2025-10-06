@@ -8,28 +8,28 @@
         /* Estilos gerais para a página com TEMA ESCURO */
         body {
             font-family: Arial, sans-serif;
-            /* Fundo em gradiente escuro */
             background: linear-gradient(135deg, #23272b 10%, #2c3e50 100%);
-            /* Cor do texto principal alterada para claro */
             color: #f8f9fa;
             margin: 0;
             padding: 20px;
         }
 
-        /* Título principal agora é branco para contrastar */
         h1 {
             text-align: center;
             color: #ffffff;
         }
 
-        /* Estilo para o container do botão de adicionar */
-        .add-ninja-container {
+        /* Container dos botões principais (agora com Flexbox) */
+        .main-actions-container {
             margin-bottom: 25px;
             text-align: left;
+            /* NOVO: Usa Flexbox para alinhar os botões lado a lado */
+            display: flex;
+            gap: 10px; /* Espaçamento entre os botões */
         }
 
-        /* Estilo para o botão de adicionar novo ninja */
-        .btn-adicionar {
+        /* Estilo do botão primário (Adicionar) */
+        .btn-primary {
             background-color: #34495e;
             padding: 10px 20px;
             border-radius: 5px;
@@ -40,8 +40,24 @@
             transition: background-color 0.3s ease;
         }
 
-        .btn-adicionar:hover {
+        .btn-primary:hover {
             background-color: #4a627a;
+        }
+
+        /* NOVO: Estilo para o botão secundário (Ver Missões) */
+        .btn-secondary {
+            background-color: #6c757d; /* Cinza para ação secundária */
+            padding: 10px 20px;
+            border-radius: 5px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
         }
 
         /* Estilo da tabela adaptado para o TEMA ESCURO */
@@ -52,37 +68,31 @@
             background-color: transparent;
         }
 
-        /* Estilo do cabeçalho da tabela */
         thead tr {
             background-color: #34495e;
             color: #ffffff;
             text-align: left;
         }
 
-        /* Estilo das células com bordas mais escuras */
         th, td {
             padding: 12px 15px;
             border: 1px solid #5a6268;
         }
 
-        /* Linhas da tabela com fundo escuro */
         tbody tr {
             background-color: #2c3e50;
         }
 
-        /* Efeito "zebrado" com um tom de cinza um pouco diferente */
         tbody tr:nth-of-type(even) {
             background-color: #343a40;
         }
 
-        /* Estilo das imagens dos ninjas */
         img {
             border-radius: 50%;
             object-fit: cover;
             border: 2px solid #5a6268;
         }
 
-        /* Estilo para os links de ação (botões) */
         td a {
             display: inline-block;
             padding: 8px 12px;
@@ -94,12 +104,10 @@
             transition: background-color 0.2s ease-in-out;
         }
 
-        /* Cores dos botões de ação */
         .btn-detalhes { background-color: #007bff; }
         .btn-alterar { background-color: #17a2b8; }
         .btn-deletar { background-color: #dc3545; }
 
-        /* Efeitos hover para os botões de ação */
         .btn-detalhes:hover { background-color: #0069d9; }
         .btn-alterar:hover { background-color: #138496; }
         .btn-deletar:hover { background-color: #c82333; }
@@ -108,8 +116,9 @@
 <body>
 <h1>Lista de Ninjas</h1>
 
-<div class="add-ninja-container">
-    <a th:href="@{/ninjas/ui/adicionar}" class="btn-adicionar">+ Adicionar Novo Ninja</a>
+<div class="main-actions-container">
+    <a th:href="@{/ninjas/ui/adicionar}" class="btn-primary">+ Adicionar Novo Ninja</a>
+    <a th:href="@{/missoes/ui/listar}" class="btn-secondary">Ver Missões</a>
 </div>
 
 <table>
