@@ -3,7 +3,7 @@ package dev.java10x.cadastrodeninjas.Ninjas;
 import org.springframework.stereotype.Component;
 
 @Component
-public class NinjaMapper {
+public class    NinjaMapper {
 
     public NinjaModel map(NinjaDTO ninjaDTO) {
 
